@@ -1,5 +1,7 @@
 <template>
-  <loginCard />
+  <loginCard
+    @show-alert="showAlert"
+  />
 </template>
 
 <script>
@@ -9,6 +11,12 @@ export default {
   components: {
     loginCard
   },
-  layout: 'login'
+  layout: 'login',
+  methods: {
+    showAlert (data) {
+      console.log('@Nint data => ', data)
+      this.$nuxt.$emit('show-alert', data)
+    }
+  }
 }
 </script>
