@@ -1,15 +1,21 @@
 <template>
   <v-card
     elevation="0"
-    color="teal lighten-3 "
+    color="teal darken-3"
     width="400"
     height="300"
     rounded
   >
     <v-card-title>
       <v-row align="center" justify="center">
-        <span style="color:white;">
-          <h3>LogIn</h3>
+        <span
+          style="color:white;
+        font-family:New Amsterdam, sans-serif;
+        font-weight: 400;
+        font-size:larger;
+        font-style: normal;"
+        >
+          <h3>Welcome back</h3>
         </span>
       </v-row>
     </v-card-title>
@@ -21,7 +27,8 @@
               v-model="usuario"
               placeholder="User"
               :rules="size"
-              solo
+              dense
+              filled
             />
           </v-row>
           <v-row style="width: 100%;">
@@ -30,7 +37,8 @@
               placeholder="Password"
               :rules="size"
               type="password"
-              solo
+              dense
+              filled
             />
           </v-row>
         </div>
@@ -101,4 +109,5 @@ export default {
     width: 100%;
     margin: 10px;
 }
+
 </style>
