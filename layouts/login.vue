@@ -50,16 +50,16 @@ export default {
 }
 </script>
 
-<style scoped>
-.login {
-    width: 100%;
-    height: 100vh;
-    background-color: #4DB6AC;
-}
-.alert {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-}
+      <style scoped>
+      .login {
+          width: 100%;
+          height: 100vh;
+          background-color: #4DB6AC;
+      }
+      .alert {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+      }
 
-</style>
+      </style>
