@@ -25,20 +25,20 @@
           <v-row style="width: 100%;">
             <v-text-field
               v-model="usuario"
-              placeholder="User"
+              placeholder="Write your Mail"
               :rules="size"
-              dense
-              filled
+              label="Mail"
+              solo
             />
           </v-row>
           <v-row style="width: 100%;">
             <v-text-field
               v-model="password"
-              placeholder="Password"
+              placeholder="Write your Password"
               :rules="size"
               type="password"
-              dense
-              filled
+              label="Password"
+              solo
             />
           </v-row>
         </div>
@@ -74,7 +74,7 @@ export default {
     }
   },
   methods: {
-    loginBackend () {
+    async loginBackend () {
       console.log('@Nint variables', this.usuario, this.password)
       const isValid = this.$refs.form.validate()
       if (isValid) {
@@ -82,13 +82,33 @@ export default {
           correo: this.usuario,
           contrasena: this.password
         }
-        this.$axios.post('/login', body)
-          .then((res) => {
-            console.log('@Nint res => ', res)
+
+        // Login with auth
+        await this.$auth.loginWith('local', {
+          data: body
+        }).then((res) => {
+          console.log('@Nint res => ', res)
+
+          this.$emit('show-alert', {
+            showAlert: true,
+            color: 'green',
+            type: 'success',
+            message: 'Succesful Login   ',
+            icon: 'mdi-success',
+            border: 'black'
           })
-          .catch((error) => {
-            console.error('@Nint error =>', error)
-          })
+          this.$router.push('/dashboard')
+        }).catch((error) => {
+          console.error('@Nint error =>', error)
+        })
+
+        // this.$axios.post('/login', body)
+        //   .then((res) => {
+        //     console.log('@Nint res => ', res)
+        //   })
+        //   .catch((error) => {
+        //     console.error('@Nint error =>', error)
+        //   })
       } else {
         this.$emit('show-alert', {
           showAlert: true,
@@ -96,7 +116,7 @@ export default {
           type: 'error',
           message: 'Invalid Credentials',
           icon: 'mdi-error',
-          border: 'white'
+          border: 'black'
         })
       }
     }
