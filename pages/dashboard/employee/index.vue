@@ -76,6 +76,7 @@
     <create-employee
       v-if="showCreate"
       @close="destroyCreate"
+      @update="updateTable"
     />
   </div>
 </template>
@@ -114,7 +115,7 @@ export default {
           text: 'Mat. Surname',
           align: 'center',
           sortable: true,
-          value: 'apaterno'
+          value: 'amaterno'
         },
         {
           text: 'Adress',
@@ -190,6 +191,7 @@ export default {
     },
     updateTable () {
       this.showDelete = false
+      this.showCreate = false
       this.idEmployee = null
       this.loadEmployee()
     },
